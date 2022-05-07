@@ -2,7 +2,9 @@
 Description=Performance Moniter Server
 
 [Service]
-ExecStart=/opt/tmrcx/start
+WorkingDirectory=/opt/tmrx
+ExecStart=/opt/tmrx/start
+Restart=always
 
 [Install]
 WantedBy=multi-user.target

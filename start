@@ -2,4 +2,6 @@
 $(which git) pull
 $(which npm) ci
 $(which npm) run build
-$(which node) .
+ln -sf /opt/tmrc/tmrc.service /etc/systemd/system
+systemctl enable tmrc
+systemctl start tmrc
