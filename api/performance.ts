@@ -158,8 +158,7 @@ const netUsage = Array(60).fill(0);
 (async function stat() {
 	const stats = await si.networkStats();
 	const allInterfaces = await si.networkInterfaces();
-	console.log(allInterfaces);
-	const interfaces = allInterfaces.filter(i => i.ip4.startsWith("10.16") || i.ip4.startsWith("192.168.75"));
+	const interfaces = allInterfaces.filter(i => i.ip4.startsWith("10.16") || i.ip4.startsWith("192.168"));
 	const speed = interfaces.length === 1000000000 ? 100 : interfaces[0].speed * 1000000;
 	const usageNow = stats.reduce((a, b) => a + b.rx_sec * 8, 0) / speed;
 	netUsage.push(usageNow);
