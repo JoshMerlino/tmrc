@@ -7,7 +7,7 @@ import prettyBytes from "pretty-bytes";
 import si from "systeminformation";
 dayjs.extend(duration);
 
-export const route = "v3/performance";
+export const routes = "v3/performance";
 
 const sections: Record<string, unknown> = {
 	cpu: null,
@@ -40,8 +40,8 @@ const netUsage = Array(60).fill(0);
 				value_formatted: `${Math.round(usageNow * 100)}%`
 			}, {
 				name: "Speed",
-				value: cpu.speedMax || cpu.speed,
-				value_formatted: `${cpu.speedMax || cpu.speed} GHz`
+				value: cpu.speed,
+				value_formatted: `${cpu.speed} GHz`
 			},
 			null,
 			{
@@ -158,6 +158,7 @@ const netUsage = Array(60).fill(0);
 (async function stat() {
 	const stats = await si.networkStats();
 	const interfaces = (await si.networkInterfaces()).filter(i => i.ip4.startsWith("10.16") || i.ip4.startsWith("192.168.75"));
+	console.log(interfaces);
 	const speed = interfaces[0].speed * 1000000;
 	const usageNow = stats.reduce((a, b) => a + b.rx_sec * 8, 0) / speed;
 	netUsage.push(usageNow);
