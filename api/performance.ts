@@ -7,7 +7,7 @@ import prettyBytes from "pretty-bytes";
 import si from "systeminformation";
 dayjs.extend(duration);
 
-export const routes = "v3/performance";
+export const route = "v3/performance";
 
 const sections: Record<string, unknown> = {
 	cpu: null,
@@ -187,6 +187,15 @@ const netUsage = Array(60).fill(0);
 	setTimeout(stat, 1000);
 }());
 
-export default function api(_req: Request, res: Response): void {
-	res.json({});
+export default async function api(_req: Request, res: Response): Promise<void> {
+	(function wait(){
+		let isReady = true;
+		for (const section in sections) isReady = isReady && sections[section] !== null;
+		if (isReady) {
+			res.json({
+				success: true,
+				sections
+			});
+		} else setTimeout(wait, 10);
+	}());
 }
