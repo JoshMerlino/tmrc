@@ -2,8 +2,8 @@
 Description=Performance Moniter Server
 
 [Service]
-WorkingDirectory=/opt/tmrx
-ExecStart=/opt/tmrx/start
+WorkingDirectory=/opt/tmrc
+ExecStart=/opt/tmrc/start
 Restart=always
 
 [Install]

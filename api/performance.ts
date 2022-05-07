@@ -54,10 +54,6 @@ const netUsage = Array(60).fill(0);
 				value: cpu.speedMax || cpu.speed,
 				value_formatted: `${cpu.speedMax || cpu.speed} GHz`
 			}, {
-				name: "Sockets",
-				value: parseInt(cpu.socket || "1"),
-				value_formatted: parseInt(cpu.socket || "1").toString()
-			}, {
 				name: "Cores",
 				value: cpu.physicalCores,
 				value_formatted: cpu.physicalCores.toString()
@@ -187,7 +183,7 @@ const netUsage = Array(60).fill(0);
 	setTimeout(stat, 1000);
 }());
 
-export default async function api(_req: Request, res: Response): Promise<void> {
+export default function api(_req: Request, res: Response): void {
 	(function wait(){
 		let isReady = true;
 		for (const section in sections) isReady = isReady && sections[section] !== null;
