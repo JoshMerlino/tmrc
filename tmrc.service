@@ -4,7 +4,7 @@ Description=Performance Moniter Server
 [Service]
 User=root
 WorkingDirectory=/opt/tmrc
-ExecStart=/usr/bin/env node /opt/tmrc/
+ExecStart=/opt/nvm/versions/node/v17.9.0/bin/node /opt/tmrc/
 Restart=always
 
 [Install]
