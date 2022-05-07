@@ -2,8 +2,9 @@
 Description=Performance Moniter Server
 
 [Service]
+User=root
 WorkingDirectory=/opt/tmrc
-ExecStart=/opt/tmrc/start
+ExecStart=/usr/bin/env node /opt/tmrc/
 Restart=always
 
 [Install]
