@@ -40,8 +40,8 @@ const netUsage = Array(60).fill(0);
 				value_formatted: `${Math.round(usageNow * 100)}%`
 			}, {
 				name: "Speed",
-				value: cpu.speed,
-				value_formatted: `${cpu.speed} GHz`
+				value: cpu.speedMax || cpu.speed,
+				value_formatted: `${cpu.speedMax || cpu.speed} GHz`
 			},
 			null,
 			{
