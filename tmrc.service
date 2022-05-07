@@ -1,0 +1,8 @@
+[Unit]
+Description=Performance Moniter Server
+
+[Service]
+ExecStart=/opt/tmrcx/start
+
+[Install]
+WantedBy=multi-user.target

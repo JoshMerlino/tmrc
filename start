@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+$(which git) pull
+$(which npm) ci
+$(which npm) run build
+$(which node) .
